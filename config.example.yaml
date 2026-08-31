@@ -1,0 +1,25 @@
+gateway:
+  host: "0.0.0.0"
+  port: 8000
+  target_backend_url: "http://127.0.0.1:8080"  # 被代理的后端服务地址
+  proxy_timeout: 10
+
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  db: 0
+  password: ""
+
+jwt:
+  secret_key: "change‑me‑real‑secret‑key‑123456"
+  algorithm: "HS256"
+  no_auth_paths: ["/gateway/health"] # 不需要鉴权的接口
+
+rate_limit:
+  enable: true
+  per_ip_max: 60       # 单IP最大请求数
+  expire_seconds: 60   # 统计窗口 60秒
+
+ip_filter:
+  blacklist: ["192.168.1.100"]
+  whitelist: []
